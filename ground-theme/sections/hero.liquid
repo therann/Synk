@@ -1,0 +1,341 @@
+{%- comment -%}
+  GROUND - Hero Section
+  Features: Animated gradient background, glass effects, floating elements
+{%- endcomment -%}
+
+<section class="hero gradient-bg gradient-bg-animated" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="hero-content" data-animate>
+      {%- if section.settings.badge_text != blank -%}
+        <div class="hero-badge glass">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+          <span>{{ section.settings.badge_text }}</span>
+        </div>
+      {%- endif -%}
+
+      <h1 class="heading-display hero-title">
+        {%- if section.settings.heading_line1 != blank -%}
+          {{ section.settings.heading_line1 }}<br>
+        {%- endif -%}
+        {%- if section.settings.heading_highlight != blank -%}
+          <span class="text-gradient">{{ section.settings.heading_highlight }}</span>
+        {%- endif -%}
+      </h1>
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero-subtitle">
+          {{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+
+      <div class="hero-cta">
+        {%- if section.settings.cta_primary_text != blank -%}
+          <a href="{{ section.settings.cta_primary_link }}" class="btn btn-primary btn-lg">
+            {{ section.settings.cta_primary_text }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.cta_secondary_text != blank -%}
+          <a href="{{ section.settings.cta_secondary_link }}" class="btn btn-glass btn-lg">
+            {{ section.settings.cta_secondary_text }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_guarantee -%}
+        <div class="hero-guarantee">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>{{ section.settings.guarantee_text | default: '30-day money back guarantee' }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.hero_image != blank -%}
+      <div class="hero-image" data-animate>
+        <div class="hero-image-wrapper glass-card">
+          <img
+            src="{{ section.settings.hero_image | image_url: width: 1200 }}"
+            alt="{{ section.settings.hero_image.alt | default: shop.name }}"
+            width="1200"
+            height="auto"
+            loading="eager"
+          >
+        </div>
+
+        {%- if section.settings.floating_card_text != blank -%}
+          <div class="hero-floating-card glass-card">
+            <span>{{ section.settings.floating_card_text }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <!-- Decorative gradient orbs -->
+  <div class="hero-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: calc(6rem + 80px) 0 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title {
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+  }
+
+  .hero-guarantee svg {
+    color: #10b981;
+  }
+
+  .hero-image {
+    position: relative;
+    margin-top: 4rem;
+    z-index: 2;
+  }
+
+  .hero-image-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .hero-floating-card {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-50%) translateX(-10px); }
+  }
+
+  /* Decorative orbs */
+  .hero-orbs {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: orbFloat 20s ease-in-out infinite;
+  }
+
+  .orb-1 {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.3), rgba(162, 155, 254, 0.2));
+    top: -200px;
+    right: -100px;
+    animation-delay: 0s;
+  }
+
+  .orb-2 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, rgba(253, 121, 168, 0.25), rgba(255, 234, 167, 0.2));
+    bottom: -100px;
+    left: -100px;
+    animation-delay: -7s;
+  }
+
+  .orb-3 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, rgba(116, 185, 255, 0.3), rgba(162, 155, 254, 0.2));
+    top: 50%;
+    left: 30%;
+    animation-delay: -14s;
+  }
+
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -30px) scale(1.05); }
+    66% { transform: translate(-20px, 20px) scale(0.95); }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding: calc(4rem + 80px) 0 4rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-cta .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .hero-floating-card {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "class": "hero-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "#1 Focus Device"
+    },
+    {
+      "type": "text",
+      "id": "heading_line1",
+      "label": "Heading Line 1",
+      "default": "Live"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading Highlight",
+      "default": "Undistracted"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "One tap. No distractions. Take back control of your focus with the device that actually works."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA Text",
+      "default": "Get Ground"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_link",
+      "label": "Primary CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA Text",
+      "default": "See How It Works"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Secondary CTA Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_guarantee",
+      "label": "Show Guarantee",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "30-day money back guarantee"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "floating_card_text",
+      "label": "Floating Card Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

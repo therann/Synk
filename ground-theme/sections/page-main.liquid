@@ -1,0 +1,76 @@
+{%- comment -%}
+  GROUND - Page Main Section
+{%- endcomment -%}
+
+<section class="section gradient-bg" data-section-id="{{ section.id }}">
+  <div class="container container-narrow">
+    <article class="page-content" data-animate>
+      <header class="page-header">
+        <h1 class="heading-xl">{{ page.title }}</h1>
+      </header>
+
+      <div class="page-body">
+        {{ page.content }}
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-body {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 3rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+  }
+
+  .page-body h2,
+  .page-body h3,
+  .page-body h4 {
+    color: var(--text-primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-body p {
+    margin-bottom: 1rem;
+  }
+
+  .page-body ul,
+  .page-body ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .page-body li {
+    margin-bottom: 0.5rem;
+  }
+
+  .page-body a {
+    color: var(--accent-primary);
+  }
+
+  .page-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Page Main",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

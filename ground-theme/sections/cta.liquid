@@ -1,0 +1,212 @@
+{%- comment -%}
+  GROUND - CTA Section
+  Features: Final call-to-action with gradient background
+{%- endcomment -%}
+
+<section class="section cta-section gradient-bg gradient-bg-animated" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="cta-wrapper" data-animate>
+      <div class="cta-content glass-card">
+        {%- if section.settings.overline != blank -%}
+          <p class="overline">{{ section.settings.overline }}</p>
+        {%- endif -%}
+
+        <h2 class="heading-xl">{{ section.settings.heading | default: 'Ready to Get Grounded?' }}</h2>
+
+        {%- if section.settings.description != blank -%}
+          <p class="lead">{{ section.settings.description }}</p>
+        {%- endif -%}
+
+        <div class="cta-buttons">
+          {%- if section.settings.cta_primary_text != blank -%}
+            <a href="{{ section.settings.cta_primary_link }}" class="btn btn-primary btn-lg">
+              {{ section.settings.cta_primary_text }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.cta_secondary_text != blank -%}
+            <a href="{{ section.settings.cta_secondary_link }}" class="btn btn-secondary btn-lg">
+              {{ section.settings.cta_secondary_text }}
+            </a>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.show_guarantee -%}
+          <p class="cta-guarantee">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+            {{ section.settings.guarantee_text | default: '30-day money back guarantee' }}
+          </p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="cta-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-wrapper {
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+  }
+
+  .cta-content .overline {
+    margin-bottom: 1rem;
+  }
+
+  .cta-content h2 {
+    margin-bottom: 1rem;
+  }
+
+  .cta-content .lead {
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-guarantee {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+  }
+
+  .cta-guarantee svg {
+    color: #10b981;
+  }
+
+  .cta-orbs {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .cta-orbs .orb-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(162, 155, 254, 0.15));
+    top: -100px;
+    left: -100px;
+  }
+
+  .cta-orbs .orb-2 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, rgba(253, 121, 168, 0.2), rgba(255, 234, 167, 0.15));
+    bottom: -50px;
+    right: -50px;
+  }
+
+  @media (max-width: 640px) {
+    .cta-content {
+      padding: 3rem 1.5rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-buttons .btn {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "CTA Section",
+  "tag": "section",
+  "class": "cta-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Overline Text",
+      "default": "Take the first step"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to Get Grounded?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Join thousands who've taken back their focus. Start your distraction-free journey today."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA Text",
+      "default": "Get Ground Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_link",
+      "label": "Primary CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Secondary CTA Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_guarantee",
+      "label": "Show Guarantee",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "30-day money back guarantee"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Section"
+    }
+  ]
+}
+{% endschema %}
