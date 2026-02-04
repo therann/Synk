@@ -1,29 +1,27 @@
 {%- comment -%}
   GROUND - Hero Section
-  Features: Animated gradient background, glass effects, floating elements
+  Features: Sky background that fades to white, minimalist luxury design
 {%- endcomment -%}
 
-<section class="hero gradient-bg gradient-bg-animated" data-section-id="{{ section.id }}">
+<section class="hero sky-hero" data-section-id="{{ section.id }}" {% if section.settings.sky_image != blank %}style="--sky-image: url('{{ section.settings.sky_image | image_url: width: 2000 }}')"{% endif %}>
+  {%- if section.settings.sky_image != blank -%}
+    <div class="sky-image-container">
+      <img
+        src="{{ section.settings.sky_image | image_url: width: 2000 }}"
+        alt=""
+        class="sky-image"
+        loading="eager"
+      >
+      <div class="sky-fade"></div>
+    </div>
+  {%- else -%}
+    <div class="sky-gradient"></div>
+  {%- endif -%}
+
   <div class="container">
     <div class="hero-content" data-animate>
-      {%- if section.settings.badge_text != blank -%}
-        <div class="hero-badge glass">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-            <path d="M2 17l10 5 10-5"></path>
-            <path d="M2 12l10 5 10-5"></path>
-          </svg>
-          <span>{{ section.settings.badge_text }}</span>
-        </div>
-      {%- endif -%}
-
       <h1 class="heading-display hero-title">
-        {%- if section.settings.heading_line1 != blank -%}
-          {{ section.settings.heading_line1 }}<br>
-        {%- endif -%}
-        {%- if section.settings.heading_highlight != blank -%}
-          <span class="text-gradient">{{ section.settings.heading_highlight }}</span>
-        {%- endif -%}
+        {{ section.settings.heading | default: 'Live Undistracted' }}
       </h1>
 
       {%- if section.settings.subheading != blank -%}
@@ -34,13 +32,17 @@
 
       <div class="hero-cta">
         {%- if section.settings.cta_primary_text != blank -%}
-          <a href="{{ section.settings.cta_primary_link }}" class="btn btn-primary btn-lg">
+          <a href="{{ section.settings.cta_primary_link }}" class="btn btn-primary">
             {{ section.settings.cta_primary_text }}
           </a>
         {%- endif -%}
         {%- if section.settings.cta_secondary_text != blank -%}
-          <a href="{{ section.settings.cta_secondary_link }}" class="btn btn-glass btn-lg">
+          <a href="{{ section.settings.cta_secondary_link }}" class="btn btn-outline">
             {{ section.settings.cta_secondary_text }}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
           </a>
         {%- endif -%}
       </div>
@@ -58,73 +60,100 @@
 
     {%- if section.settings.hero_image != blank -%}
       <div class="hero-image" data-animate>
-        <div class="hero-image-wrapper glass-card">
-          <img
-            src="{{ section.settings.hero_image | image_url: width: 1200 }}"
-            alt="{{ section.settings.hero_image.alt | default: shop.name }}"
-            width="1200"
-            height="auto"
-            loading="eager"
-          >
-        </div>
-
-        {%- if section.settings.floating_card_text != blank -%}
-          <div class="hero-floating-card glass-card">
-            <span>{{ section.settings.floating_card_text }}</span>
-          </div>
-        {%- endif -%}
+        <img
+          src="{{ section.settings.hero_image | image_url: width: 600 }}"
+          alt="{{ section.settings.hero_image.alt | default: 'Ground Device' }}"
+          width="600"
+          height="auto"
+          loading="eager"
+        >
       </div>
     {%- endif -%}
-  </div>
-
-  <!-- Decorative gradient orbs -->
-  <div class="hero-orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
   </div>
 </section>
 
 <style>
-  .hero {
+  .sky-hero {
+    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
     padding: calc(6rem + 80px) 0 6rem;
-    position: relative;
     overflow: hidden;
   }
 
-  .hero-content {
+  /* Sky Image Background */
+  .sky-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  .sky-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .sky-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 30%,
+      rgba(255, 255, 255, 0.7) 60%,
+      #ffffff 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Fallback Sky Gradient */
+  .sky-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      #87CEEB 0%,
+      #9DD5ED 20%,
+      #B5E0F0 40%,
+      #D4EEF8 60%,
+      #FFFFFF 100%
+    );
+    z-index: 0;
+  }
+
+  .sky-hero .container {
     position: relative;
     z-index: 2;
+  }
+
+  .hero-content {
     text-align: center;
-    max-width: 900px;
+    max-width: 700px;
     margin: 0 auto;
   }
 
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1.25rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-  }
-
   .hero-title {
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
   }
 
   .hero-subtitle {
-    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-size: 1.125rem;
     color: var(--text-secondary);
-    margin-bottom: 2.5rem;
-    max-width: 600px;
+    margin-bottom: 2rem;
+    max-width: 480px;
     margin-left: auto;
     margin-right: auto;
     line-height: 1.7;
@@ -134,8 +163,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-cta .btn-outline svg {
+    transition: transform 0.2s ease;
+  }
+
+  .hero-cta .btn-outline:hover svg {
+    transform: translateX(3px);
   }
 
   .hero-guarantee {
@@ -143,100 +180,27 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     color: var(--text-muted);
   }
 
   .hero-guarantee svg {
-    color: #10b981;
+    color: #22c55e;
   }
 
   .hero-image {
-    position: relative;
-    margin-top: 4rem;
-    z-index: 2;
-  }
-
-  .hero-image-wrapper {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 1rem;
-    overflow: hidden;
+    margin-top: 3rem;
+    text-align: center;
   }
 
   .hero-image img {
+    max-width: 380px;
     width: 100%;
     height: auto;
-    border-radius: 12px;
-  }
-
-  .hero-floating-card {
-    position: absolute;
-    right: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 1rem 1.5rem;
-    font-weight: 500;
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(-50%) translateX(0); }
-    50% { transform: translateY(-50%) translateX(-10px); }
-  }
-
-  /* Decorative orbs */
-  .hero-orbs {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-    animation: orbFloat 20s ease-in-out infinite;
-  }
-
-  .orb-1 {
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.3), rgba(162, 155, 254, 0.2));
-    top: -200px;
-    right: -100px;
-    animation-delay: 0s;
-  }
-
-  .orb-2 {
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(135deg, rgba(253, 121, 168, 0.25), rgba(255, 234, 167, 0.2));
-    bottom: -100px;
-    left: -100px;
-    animation-delay: -7s;
-  }
-
-  .orb-3 {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(135deg, rgba(116, 185, 255, 0.3), rgba(162, 155, 254, 0.2));
-    top: 50%;
-    left: 30%;
-    animation-delay: -14s;
-  }
-
-  @keyframes orbFloat {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, -30px) scale(1.05); }
-    66% { transform: translate(-20px, 20px) scale(0.95); }
   }
 
   @media (max-width: 768px) {
-    .hero {
+    .sky-hero {
       min-height: auto;
       padding: calc(4rem + 80px) 0 4rem;
     }
@@ -248,11 +212,15 @@
 
     .hero-cta .btn {
       width: 100%;
-      max-width: 300px;
+      max-width: 280px;
     }
 
-    .hero-floating-card {
-      display: none;
+    .hero-image img {
+      max-width: 280px;
+    }
+
+    .sky-fade {
+      height: 70%;
     }
   }
 </style>
@@ -264,22 +232,16 @@
   "class": "hero-section",
   "settings": [
     {
-      "type": "text",
-      "id": "badge_text",
-      "label": "Badge Text",
-      "default": "#1 Focus Device"
+      "type": "image_picker",
+      "id": "sky_image",
+      "label": "Sky Background Image",
+      "info": "Upload a sky image. It will fade to white at the bottom."
     },
     {
       "type": "text",
-      "id": "heading_line1",
-      "label": "Heading Line 1",
-      "default": "Live"
-    },
-    {
-      "type": "text",
-      "id": "heading_highlight",
-      "label": "Heading Highlight",
-      "default": "Undistracted"
+      "id": "heading",
+      "label": "Heading",
+      "default": "Live Undistracted"
     },
     {
       "type": "textarea",
@@ -290,24 +252,24 @@
     {
       "type": "text",
       "id": "cta_primary_text",
-      "label": "Primary CTA Text",
-      "default": "Get Ground"
+      "label": "Primary Button Text",
+      "default": "Buy Now"
     },
     {
       "type": "url",
       "id": "cta_primary_link",
-      "label": "Primary CTA Link"
+      "label": "Primary Button Link"
     },
     {
       "type": "text",
       "id": "cta_secondary_text",
-      "label": "Secondary CTA Text",
+      "label": "Secondary Button Text",
       "default": "See How It Works"
     },
     {
       "type": "url",
       "id": "cta_secondary_link",
-      "label": "Secondary CTA Link"
+      "label": "Secondary Button Link"
     },
     {
       "type": "checkbox",
@@ -324,12 +286,7 @@
     {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Hero Image"
-    },
-    {
-      "type": "text",
-      "id": "floating_card_text",
-      "label": "Floating Card Text"
+      "label": "Product Image"
     }
   ],
   "presets": [
