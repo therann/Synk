@@ -1,0 +1,156 @@
+{%- comment -%}
+  GROUND - Social Proof Section
+  Features: Logo bar with trusted companies
+{%- endcomment -%}
+
+<section class="section social-proof" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="social-proof-content" data-animate>
+      {%- if section.settings.title != blank -%}
+        <p class="social-proof-title">{{ section.settings.title }}</p>
+      {%- endif -%}
+
+      <div class="social-proof-logos">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.logo != blank -%}
+            <div class="social-proof-logo">
+              <img
+                src="{{ block.settings.logo | image_url: width: 200 }}"
+                alt="{{ block.settings.name | default: 'Partner logo' }}"
+                width="auto"
+                height="32"
+                loading="lazy"
+              >
+            </div>
+          {%- elsif block.settings.name != blank -%}
+            <div class="social-proof-logo social-proof-logo-text">
+              {{ block.settings.name }}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .social-proof {
+    padding: 4rem 0;
+    text-align: center;
+    background: transparent;
+  }
+
+  .social-proof-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .social-proof-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .social-proof-logo {
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+
+  .social-proof-logo:hover {
+    opacity: 1;
+  }
+
+  .social-proof-logo img {
+    height: 28px;
+    width: auto;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+  }
+
+  .social-proof-logo:hover img {
+    filter: grayscale(0%);
+  }
+
+  .social-proof-logo-text {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 768px) {
+    .social-proof-logos {
+      gap: 2rem;
+    }
+
+    .social-proof-logo img {
+      height: 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Social Proof",
+  "tag": "section",
+  "class": "social-proof-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Trusted by top performers at"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Company Name",
+          "info": "Shown if no logo image is uploaded"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Proof",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "name": "Georgia Tech"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "name": "Google"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "name": "Yale"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

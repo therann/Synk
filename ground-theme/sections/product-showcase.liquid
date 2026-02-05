@@ -1,0 +1,269 @@
+{%- comment -%}
+  GROUND - Product Showcase Section
+  Features: Product image with feature highlights
+{%- endcomment -%}
+
+<section class="section" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="product-showcase {% if section.settings.reverse_layout %}product-showcase-reverse{% endif %}">
+      <div class="product-image" data-animate>
+        {%- if section.settings.image != blank -%}
+          <div class="product-image-wrapper">
+            <img
+              src="{{ section.settings.image | image_url: width: 800 }}"
+              alt="{{ section.settings.image.alt | default: 'The Ground' }}"
+              width="800"
+              height="auto"
+              loading="lazy"
+            >
+          </div>
+        {%- else -%}
+          <div class="product-placeholder glass-card">
+            <svg width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <text x="12" y="16" text-anchor="middle" font-size="6" fill="currentColor">GROUND</text>
+            </svg>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="product-content" data-animate>
+        {%- if section.settings.overline != blank -%}
+          <p class="overline">{{ section.settings.overline }}</p>
+        {%- endif -%}
+
+        <h2 class="heading-xl">{{ section.settings.heading | default: 'The Ground' }}</h2>
+
+        <div class="product-features">
+          {%- for block in section.blocks -%}
+            <div class="product-feature">
+              <div class="product-feature-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="product-feature-text">
+                <h4>{{ block.settings.title }}</h4>
+                <p>{{ block.settings.description }}</p>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.cta_text != blank -%}
+          <a href="{{ section.settings.cta_link }}" class="btn btn-primary btn-lg">
+            {{ section.settings.cta_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .product-showcase-reverse {
+    direction: rtl;
+  }
+
+  .product-showcase-reverse > * {
+    direction: ltr;
+  }
+
+  .product-image-wrapper {
+    position: relative;
+  }
+
+  .product-image-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -40px;
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.08), rgba(253, 121, 168, 0.08));
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -1;
+  }
+
+  .product-image img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  .product-placeholder {
+    aspect-ratio: 1;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    border-radius: 50%;
+  }
+
+  .product-content {
+    max-width: 520px;
+  }
+
+  .product-content .overline {
+    margin-bottom: 0.75rem;
+  }
+
+  .product-content h2 {
+    margin-bottom: 2rem;
+  }
+
+  .product-features {
+    margin-bottom: 2.5rem;
+  }
+
+  .product-feature {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .product-feature:last-child {
+    margin-bottom: 0;
+  }
+
+  .product-feature-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: var(--white);
+    border-radius: 50%;
+  }
+
+  .product-feature-text h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+  }
+
+  .product-feature-text p {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 1024px) {
+    .product-showcase {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .product-showcase-reverse {
+      direction: ltr;
+    }
+
+    .product-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .product-image img {
+      margin: 0 auto;
+    }
+
+    .product-feature {
+      text-align: left;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Showcase",
+  "tag": "section",
+  "class": "product-showcase-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Overline Text",
+      "default": "The Device"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Ground"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Buy Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_layout",
+      "label": "Reverse Layout",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Seamless Focus"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Instantly block distractions and stay in control with the Ground app for iPhone — no complicated setups and subscription needed."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Showcase",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Seamless Focus",
+            "description": "Instantly block distractions and stay in control with the Ground app for iPhone — no complicated setups and subscription needed."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "Smart & Secure",
+            "description": "Sleek and magnetic, designed to stick to whatever magnetic surface you place."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

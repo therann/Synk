@@ -1,0 +1,212 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "badge_text": "#1 Focus Device",
+        "heading_line1": "Live",
+        "heading_highlight": "Undistracted",
+        "subheading": "One tap. No distractions. Take back control of your focus with the device that actually works.",
+        "cta_primary_text": "Get Ground",
+        "cta_secondary_text": "See How It Works",
+        "show_guarantee": true,
+        "guarantee_text": "30-day money back guarantee"
+      }
+    },
+    "social_proof": {
+      "type": "social-proof",
+      "settings": {
+        "title": "Trusted by top performers at"
+      },
+      "blocks": {
+        "logo_1": {
+          "type": "logo",
+          "settings": {
+            "name": "Georgia Tech"
+          }
+        },
+        "logo_2": {
+          "type": "logo",
+          "settings": {
+            "name": "Google"
+          }
+        },
+        "logo_3": {
+          "type": "logo",
+          "settings": {
+            "name": "Yale"
+          }
+        }
+      },
+      "block_order": ["logo_1", "logo_2", "logo_3"]
+    },
+    "meet_ground": {
+      "type": "meet-ground",
+      "settings": {
+        "overline": "Introducing",
+        "heading": "Meet Ground",
+        "description": "<p>A physical device that completely removes the ability to bypass app blocks and notifications that go with it. Easy setup. <strong>No subscriptions.</strong></p>",
+        "cta_text": "Buy Now",
+        "reverse_layout": false
+      }
+    },
+    "how_it_works": {
+      "type": "how-it-works",
+      "settings": {
+        "overline": "Simple Setup",
+        "heading": "How It Works",
+        "description": "Get started in seconds. No complicated setup required."
+      },
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Select distractions to block",
+            "description": "Choose which apps you want to block using the Ground app for iPhone."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Place Ground anywhere",
+            "description": "Leave your Ground device at home, in a drawer, or anywhere out of reach."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Stay focused",
+            "description": "Enjoy your day without the temptation. Apps stay blocked until you tap Ground."
+          }
+        }
+      },
+      "block_order": ["step_1", "step_2", "step_3"]
+    },
+    "the_problem": {
+      "type": "the-problem",
+      "settings": {
+        "overline": "Why We Built This",
+        "heading": "The Problem",
+        "reverse_layout": true
+      },
+      "blocks": {
+        "para_1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Too often, our phones pull us away from the moments that matter."
+          }
+        },
+        "para_2": {
+          "type": "paragraph",
+          "settings": {
+            "text": "The constant notifications, social media, and infinite feeds left us feeling overwhelmed and drained."
+          }
+        },
+        "para_3": {
+          "type": "paragraph",
+          "settings": {
+            "text": "And even with good intentions, distractions usually won. So, we created GROUND."
+          }
+        }
+      },
+      "block_order": ["para_1", "para_2", "para_3"]
+    },
+    "comparison": {
+      "type": "comparison",
+      "settings": {
+        "overline": "Why Ground Works",
+        "heading": "The Difference",
+        "before_title": "Screen Time",
+        "before_caption": "Easy to bypass with one tap",
+        "after_title": "Ground",
+        "after_caption": "Physical barrier = real commitment",
+        "bottom_heading": "How is Ground Different?",
+        "bottom_text": "Screen time makes the \"key\" to get back in the app easily accessible. With Ground, you can leave the key behind, which keeps your phone distraction-free while you're out.",
+        "cta_text": "Buy Now"
+      }
+    },
+    "product_showcase": {
+      "type": "product-showcase",
+      "settings": {
+        "overline": "The Device",
+        "heading": "The Ground",
+        "cta_text": "Buy Now",
+        "reverse_layout": false
+      },
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "title": "Seamless Focus",
+            "description": "Instantly block distractions and stay in control with the Ground app for iPhone — no complicated setups and subscription needed."
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "title": "Smart & Secure",
+            "description": "Sleek and magnetic, designed to stick to whatever magnetic surface you place."
+          }
+        }
+      },
+      "block_order": ["feature_1", "feature_2"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "overline": "Testimonials",
+        "heading": "What People Are Saying"
+      },
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As an ADHD coach, I highly recommend the Ground device to my high school and college clients. This tool has been transformative in helping them manage distractions and enhance their productivity.",
+            "name": "Dr. Paula",
+            "title": "Lotus Coaching Services"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Ground has changed how I study forever. I'm much more efficient and I don't stress about deadlines anymore. I'm finally able to study without getting distracted.",
+            "name": "Adam",
+            "title": "Student"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Since I've been using Ground for our household, I can block TikTok and Instagram while they're at school, and keep important apps like Call and Messages.",
+            "name": "Jen",
+            "title": "Parent"
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "overline": "Take the first step",
+        "heading": "Ready to Get Grounded?",
+        "description": "Join thousands who've taken back their focus. Start your distraction-free journey today.",
+        "cta_primary_text": "Get Ground Now",
+        "cta_secondary_text": "Learn More",
+        "show_guarantee": true,
+        "guarantee_text": "30-day money back guarantee"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "social_proof",
+    "meet_ground",
+    "how_it_works",
+    "the_problem",
+    "comparison",
+    "product_showcase",
+    "testimonials",
+    "cta"
+  ]
+}

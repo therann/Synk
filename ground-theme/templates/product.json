@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-main",
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "heading": "What People Are Saying"
+      }
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "heading": "Ready to Get Grounded?",
+        "cta_primary_text": "Add to Cart"
+      }
+    }
+  },
+  "order": ["main", "testimonials", "cta"]
+}

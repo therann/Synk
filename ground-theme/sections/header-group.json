@@ -1,0 +1,20 @@
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "text": "FREE SHIPPING ON 2+ GROUNDS"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "cta_text": "Buy Now"
+      }
+    }
+  },
+  "order": ["announcement", "header"]
+}

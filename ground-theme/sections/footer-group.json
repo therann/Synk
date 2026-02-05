@@ -1,0 +1,30 @@
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "description": "Take back control of your focus with the device that actually works.",
+        "newsletter_heading": "Get Productivity Tips",
+        "newsletter_text": "Join our newsletter for tips and Ground updates."
+      },
+      "blocks": {
+        "links_1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop"
+          }
+        },
+        "links_2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Support"
+          }
+        }
+      },
+      "block_order": ["links_1", "links_2"]
+    }
+  },
+  "order": ["footer"]
+}

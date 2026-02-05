@@ -1,0 +1,130 @@
+{%- comment -%}
+  GROUND - Collection Main Section
+{%- endcomment -%}
+
+<section class="section gradient-bg" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="collection-header" data-animate>
+      <h1 class="heading-xl">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <p class="lead">{{ collection.description }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if collection.products.size > 0 -%}
+      <div class="collection-grid">
+        {%- for product in collection.products -%}
+          <a href="{{ product.url }}" class="product-card glass-card" data-animate style="animation-delay: {{ forloop.index | times: 50 }}ms;">
+            <div class="product-card-image">
+              {%- if product.featured_image != blank -%}
+                <img
+                  src="{{ product.featured_image | image_url: width: 600 }}"
+                  alt="{{ product.featured_image.alt | default: product.title }}"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                >
+              {%- else -%}
+                <div class="product-card-placeholder">
+                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  </svg>
+                </div>
+              {%- endif -%}
+            </div>
+            <div class="product-card-info">
+              <h3>{{ product.title }}</h3>
+              <p class="product-card-price">{{ product.price | money }}</p>
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="text-center text-muted">No products found in this collection.</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .collection-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .collection-header h1 {
+    margin-bottom: 1rem;
+  }
+
+  .collection-header .lead {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .product-card {
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .product-card-image {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  .product-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover .product-card-image img {
+    transform: scale(1.05);
+  }
+
+  .product-card-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+  }
+
+  .product-card-info {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .product-card-info h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-card-price {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection Main",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

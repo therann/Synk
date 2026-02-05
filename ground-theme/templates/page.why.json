@@ -1,0 +1,100 @@
+{
+  "sections": {
+    "why_ground": {
+      "type": "why-ground",
+      "settings": {
+        "overline": "Why Ground",
+        "heading": "Focus is a Superpower",
+        "subheading": "In a world of endless distractions, the ability to focus is what sets high performers apart."
+      },
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "number": "4+ hrs",
+            "label": "Average daily screen time"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "number": "96x",
+            "label": "Times we check our phones daily"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "number": "23 min",
+            "label": "To regain focus after distraction"
+          }
+        },
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Real Results, Not Just Reminders",
+            "description": "Unlike software solutions that rely on willpower, Ground creates a physical barrier between you and distracting apps. When temptation strikes, you can't just tap through—you need the device."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Built for How We Actually Work",
+            "description": "Ground understands that focus isn't about blocking everything—it's about being intentional. Keep the apps you need, block the ones that steal your time."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Designed for Your Life",
+            "description": "Whether you're a student studying for exams, a professional who needs deep work time, or a parent managing your family's screen time—Ground adapts to your needs."
+          }
+        }
+      },
+      "block_order": ["stat_1", "stat_2", "stat_3", "benefit_1", "benefit_2", "benefit_3"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "heading": "Trusted by Thousands"
+      },
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Ground helped me finish my thesis. I couldn't have done it without the focus it gave me.",
+            "name": "Sarah",
+            "title": "Graduate Student"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As a developer, deep work is everything. Ground lets me code for hours without the Instagram itch.",
+            "name": "Mike",
+            "title": "Software Engineer"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Finally, a solution that actually works for my ADHD brain.",
+            "name": "Jamie",
+            "title": "Designer"
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "heading": "Take Back Your Focus",
+        "description": "Join thousands who've reclaimed their time and attention.",
+        "cta_primary_text": "Get Ground",
+        "show_guarantee": true
+      }
+    }
+  },
+  "order": ["why_ground", "testimonials", "cta"]
+}
