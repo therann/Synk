@@ -20,6 +20,21 @@
 
   <div class="container">
     <div class="hero-content" data-animate>
+      {%- if section.settings.show_stars -%}
+        <div class="hero-stars">
+          <div class="stars-row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          {%- if section.settings.stars_text != blank -%}
+            <span class="stars-text">{{ section.settings.stars_text }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
       <h1 class="heading-display hero-title">
         {{ section.settings.heading | default: 'Live Undistracted' }}
       </h1>
@@ -78,8 +93,30 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: calc(6rem + 80px) 0 6rem;
+    padding: calc(6rem + var(--header-height, 70px) + var(--announcement-height, 40px)) 0 6rem;
     overflow: hidden;
+  }
+
+  /* Stars Rating */
+  .hero-stars {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stars-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #fbbf24;
+  }
+
+  .stars-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
   }
 
   /* Sky Image Background */
@@ -236,6 +273,18 @@
       "id": "sky_image",
       "label": "Sky Background Image",
       "info": "Upload a sky image. It will fade to white at the bottom."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "Show 5-Star Rating",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stars_text",
+      "label": "Stars Text",
+      "default": "Loved by thousands"
     },
     {
       "type": "text",

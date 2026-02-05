@@ -15,14 +15,33 @@
     </p>
   </div>
 </div>
+<style>
+  :root {
+    --announcement-height: 40px;
+  }
+</style>
+{%- else -%}
+<style>
+  :root {
+    --announcement-height: 0px;
+  }
+</style>
 {%- endif -%}
 
 <style>
   .announcement-bar {
-    background: var(--text-primary);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background: var(--black);
     color: var(--white);
-    padding: 0.75rem 0;
+    padding: 0.625rem 0;
     text-align: center;
+    height: var(--announcement-height);
+    display: flex;
+    align-items: center;
   }
 
   .announcement-text {
