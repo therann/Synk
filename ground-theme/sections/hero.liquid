@@ -1,0 +1,347 @@
+{%- comment -%}
+  GROUND - Hero Section
+  Features: Sky background that fades to white, minimalist luxury design
+{%- endcomment -%}
+
+<section class="hero sky-hero" data-section-id="{{ section.id }}" {% if section.settings.sky_image != blank %}style="--sky-image: url('{{ section.settings.sky_image | image_url: width: 2000 }}')"{% endif %}>
+  {%- if section.settings.sky_image != blank -%}
+    <div class="sky-image-container">
+      <img
+        src="{{ section.settings.sky_image | image_url: width: 2000 }}"
+        alt=""
+        class="sky-image"
+        loading="eager"
+      >
+      <div class="sky-fade"></div>
+    </div>
+  {%- else -%}
+    <div class="sky-gradient"></div>
+  {%- endif -%}
+
+  <div class="container">
+    <div class="hero-content" data-animate>
+      {%- if section.settings.show_stars -%}
+        <div class="hero-stars">
+          <div class="stars-row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          {%- if section.settings.stars_text != blank -%}
+            <span class="stars-text">{{ section.settings.stars_text }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <h1 class="heading-display hero-title">
+        {{ section.settings.heading | default: 'Live Undistracted' }}
+      </h1>
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero-subtitle">
+          {{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+
+      <div class="hero-cta">
+        {%- if section.settings.cta_primary_text != blank -%}
+          <a href="{{ section.settings.cta_primary_link }}" class="btn btn-primary">
+            {{ section.settings.cta_primary_text }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.cta_secondary_text != blank -%}
+          <a href="{{ section.settings.cta_secondary_link }}" class="btn btn-outline">
+            {{ section.settings.cta_secondary_text }}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_guarantee -%}
+        <div class="hero-guarantee">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span>{{ section.settings.guarantee_text | default: '30-day money back guarantee' }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.hero_image != blank -%}
+      <div class="hero-image" data-animate>
+        <img
+          src="{{ section.settings.hero_image | image_url: width: 600 }}"
+          alt="{{ section.settings.hero_image.alt | default: 'Ground Device' }}"
+          width="600"
+          height="auto"
+          loading="eager"
+        >
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .sky-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: calc(6rem + var(--header-height, 70px) + var(--announcement-height, 40px)) 0 6rem;
+    overflow: hidden;
+  }
+
+  /* Stars Rating */
+  .hero-stars {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stars-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #fbbf24;
+  }
+
+  .stars-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  /* Sky Image Background */
+  .sky-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  .sky-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .sky-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 30%,
+      rgba(255, 255, 255, 0.7) 60%,
+      #ffffff 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Fallback Sky Gradient */
+  .sky-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      #87CEEB 0%,
+      #9DD5ED 20%,
+      #B5E0F0 40%,
+      #D4EEF8 60%,
+      #FFFFFF 100%
+    );
+    z-index: 0;
+  }
+
+  .sky-hero .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-cta .btn-outline svg {
+    transition: transform 0.2s ease;
+  }
+
+  .hero-cta .btn-outline:hover svg {
+    transform: translateX(3px);
+  }
+
+  .hero-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  .hero-guarantee svg {
+    color: #22c55e;
+  }
+
+  .hero-image {
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .hero-image img {
+    max-width: 380px;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .sky-hero {
+      min-height: auto;
+      padding: calc(4rem + 80px) 0 4rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-cta .btn {
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .hero-image img {
+      max-width: 280px;
+    }
+
+    .sky-fade {
+      height: 70%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "class": "hero-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "sky_image",
+      "label": "Sky Background Image",
+      "info": "Upload a sky image. It will fade to white at the bottom."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "Show 5-Star Rating",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stars_text",
+      "label": "Stars Text",
+      "default": "Loved by thousands"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Live Undistracted"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "One tap. No distractions. Take back control of your focus with the device that actually works."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary Button Text",
+      "default": "Buy Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary Button Text",
+      "default": "See How It Works"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_guarantee",
+      "label": "Show Guarantee",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "30-day money back guarantee"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Product Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,70 @@
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "overline": "Support",
+        "heading": "Frequently Asked Questions",
+        "description": "Everything you need to know about Ground.",
+        "cta_description": "Still have questions?",
+        "cta_text": "Contact Us"
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "How does Ground work?",
+            "answer": "<p>Ground is an NFC device that works with our free iOS app. Simply select the apps you want to block, and they'll stay blocked until you physically tap the Ground device. No bypasses, no workarounds.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "What phones is Ground compatible with?",
+            "answer": "<p>Ground works with any iPhone that has NFC capabilities (iPhone 7 and later). We're working on Android support.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Is there a subscription?",
+            "answer": "<p>No! Ground is a one-time purchase. The app is free, and there are no hidden fees or subscriptions.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "What's your return policy?",
+            "answer": "<p>We offer a 30-day money back guarantee. If Ground doesn't work for you, just reach out and we'll process a full refund.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I use Ground for my kids?",
+            "answer": "<p>Absolutely! Many parents use Ground to help manage their children's screen time. You can block specific apps while keeping essential communication apps available.</p>"
+          }
+        },
+        "faq_6": {
+          "type": "faq",
+          "settings": {
+            "question": "How is Ground different from Screen Time?",
+            "answer": "<p>Screen Time allows you to easily bypass limits with just a tap. Ground requires physical access to the device, creating a real barrier between you and distracting apps.</p>"
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5", "faq_6"]
+    },
+    "cta": {
+      "type": "cta",
+      "settings": {
+        "overline": "Ready to focus?",
+        "heading": "Get Grounded Today",
+        "description": "Join thousands who've taken back their focus.",
+        "cta_primary_text": "Buy Now",
+        "show_guarantee": true
+      }
+    }
+  },
+  "order": ["faq", "cta"]
+}
